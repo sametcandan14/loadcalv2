@@ -1,0 +1,60 @@
+// colors
+
+// Ocean Blue:
+// RAL: 5005
+// Hex: #1F4788
+// Cargo Green:
+// RAL: 6024
+// Hex: #008543
+// Steel Gray:
+// RAL: 7031
+// Hex: #8A8D8F
+// Safety Yellow:
+// RAL: 1023
+// Hex: #FFC20E
+
+@import "bootstrap/scss/bootstrap";
+
+:root {
+  --base-color: #ffffff;
+  --ocean-blue: #1f4788;
+  --cargo-green: #008543;
+  --safety-yellow: #ffc20e;
+  --steel-gray: #8a8d8f;
+}
+
+.base-color-back {
+  background-color: var(--base-color);
+}
+
+.ocean-blue-back {
+  background-color: var(--ocean-blue);
+}
+.safety-yellow-back {
+  background-color: var(--safety-yellow);
+}
+.steel-gray-back {
+  background-color: var(--steel-gray);
+}
+
+.base-color {
+  color: var(--base-color);
+}
+
+.ocean-blue {
+  color: var(--ocean-blue);
+}
+.safety-yellow {
+  color: var(--safety-yellow);
+}
+.steel-gray {
+  color: var(--steel-gray);
+}
+
+.logo-img {
+  height: 50px;
+}
+
+body {
+  background-color: var(--base-color);
+}
