@@ -2,21 +2,35 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
       <Navbar expand="lg" className=" safety-yellow-back">
         <Container>
-          <Navbar.Brand href="#home">
-            <img className="logo-img" src="loadcal_logo.png" alt="" />
+          <Navbar.Brand>
+            <Nav.Link as={Link} to="/">
+              <img className="logo-img" src="loadcal_logo.png" alt="" />
+            </Nav.Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <Nav.Link as={Link} to="/containers">
+                Containers
+              </Nav.Link>
+              <Nav.Link as={Link} to="/boxes">
+                Boxes
+              </Nav.Link>
+              <Nav.Link as={Link} to="/plans">
+                Plans
+              </Nav.Link>
+              <Nav.Link as={Link} to="/calculate">
+                Calculate
+              </Nav.Link>
+
+              <NavDropdown title="User Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
