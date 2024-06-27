@@ -37,8 +37,28 @@
   background-color: var(--steel-gray);
 }
 
+.cargo-green-back {
+  background-color: var(--cargo-green);
+}
+
+.cargo-green-btn {
+  background-color: var(--safety-yellow);
+  border: var(--safety-yellow);
+  color: rgba(0, 0, 0, 0.8);
+
+  &:hover {
+    background-color: var(--ocean-blue);
+    border: var(--ocean-blue);
+    color: var(--safety-yellow);
+  }
+}
+
 .base-color {
   color: var(--base-color);
+}
+
+.cargo-green {
+  background-color: var(--cargo-green);
 }
 
 .ocean-blue {
