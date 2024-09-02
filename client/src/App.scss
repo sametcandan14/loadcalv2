@@ -78,3 +78,18 @@
 body {
   background-color: var(--base-color);
 }
+
+// FOOTER
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+  .logo {
+    width: 2rem;
+    padding: 0.1rem;
+  }
+}
