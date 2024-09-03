@@ -1,15 +1,17 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import LoadPlan from "../../components/LoadPlan";
 import { FormEvent, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { CalFunc } from "../../utils/CalFunc";
 
 const Calculate = () => {
   type valuesT = {
-    contWidth?: number | undefined;
-    contLength?: number | undefined;
-    contHeight?: number | undefined;
-    boxWidth?: number | undefined;
-    boxLength?: number | undefined;
-    boxHeight?: number | undefined;
+    contWidth?: number;
+    contLength?: number;
+    contHeight?: number;
+    boxWidth?: number;
+    boxLength?: number;
+    boxHeight?: number;
   };
 
   const [values, setValues] = useState<valuesT>();
@@ -20,12 +22,47 @@ const Calculate = () => {
       [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
         .value,
     });
-
-    console.log(values);
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    if (
+      values?.boxHeight &&
+      values.boxLength &&
+      values.boxWidth &&
+      values.contHeight &&
+      values.contLength &&
+      values.contWidth
+    ) {
+      if (values.contWidth > values.contLength) {
+        toast.warn("Container Width can not be smaller than Container Length");
+        return;
+      }
+
+      if (values.boxWidth > values.boxLength) {
+        toast.warn("Box Width can not be smaller than Box Length");
+        return;
+      }
+
+      const boxW = values.boxWidth;
+      const boxL = values.boxLength;
+      const boxH = values.boxHeight;
+      const contW = values.contWidth;
+      const contL = values.contLength;
+      const contH = values.contHeight;
+
+      const checkedValues = {
+        boxW,
+        boxL,
+        boxH,
+        contW,
+        contL,
+        contH,
+      };
+
+      CalFunc(checkedValues);
+    }
 
     console.log(values);
   };
@@ -95,6 +132,7 @@ const Calculate = () => {
             </Button>
           </div>
         </Form>
+        <ToastContainer />
       </Container>
       <LoadPlan />
     </div>
