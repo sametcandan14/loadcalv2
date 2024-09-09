@@ -17,7 +17,40 @@ export const CalFunc = (props: CalFuncProps) => {
   const lengthwise1 = Math.floor(contL / boxW);
   const lengthwise2 = Math.floor(contL / boxL);
 
-  return widthwise1 && widthwise2 && lengthwise1 && lengthwise2 && boxStack;
+  var m: number = 0;
+  var n: number = 0;
+  var max: number = 0;
+
+  for (let i = 0; i <= widthwise1; i++) {
+    for (let j = 0; j <= widthwise2; j++) {
+      if (boxW * i + boxL * j <= contW) {
+        if (boxW * i + boxL * j >= max) {
+          max = boxW * i + boxL * j;
+          m = i;
+          n = j;
+        }
+      }
+    }
+  }
+
+  console.log(m, n);
+
+  //         // Muhammet Soytürk -->>
+  //         var n = 0;
+  //         var m = 0;
+  //         var max = 0;
+  //         for (var i = 0; i < dizi1.length; i++) {
+  //           for (var j = 0; j < dizi2.length; j++) {
+  //             if (bw * dizi1[i] + bl * dizi2[j] <= cw) {
+  //               if (bw * dizi1[i] + bl * dizi2[j] >= max) {
+  //                 max = bw * dizi1[i] + bl * dizi2[j];
+  //                 n = dizi1[i];
+  //                 m = dizi2[j];
+  //               }
+  //             }
+  //           }
+  //         }
+  //         // Muhammet Soytürk <<--
 };
 
 // suq = Math.floor(ch / bh);

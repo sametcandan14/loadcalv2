@@ -35,12 +35,12 @@ const Calculate = () => {
       values.contLength &&
       values.contWidth
     ) {
-      if (values.contWidth > values.contLength) {
+      if (Number(values.contWidth) > Number(values.contLength)) {
         toast.warn("Container Width must be smaller than Container Length");
         return;
       }
 
-      if (values.boxWidth > values.boxLength) {
+      if (Number(values.boxWidth) > Number(values.boxLength)) {
         toast.warn("Box Width must be smaller than Box Length");
         return;
       }
