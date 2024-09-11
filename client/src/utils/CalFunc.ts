@@ -17,40 +17,42 @@ export const CalFunc = (props: CalFuncProps) => {
   const lengthwise1 = Math.floor(contL / boxW);
   const lengthwise2 = Math.floor(contL / boxL);
 
-  var m: number = 0;
-  var n: number = 0;
+  var inWidth: number = 0;
+  var longit: number = 0;
   var max: number = 0;
+
+  //         // Muhammet Soytürk -->>
 
   for (let i = 0; i <= widthwise1; i++) {
     for (let j = 0; j <= widthwise2; j++) {
       if (boxW * i + boxL * j <= contW) {
         if (boxW * i + boxL * j >= max) {
           max = boxW * i + boxL * j;
-          m = i;
-          n = j;
+          inWidth = i;
+          longit = j;
         }
       }
     }
   }
+  // Muhammet Soytürk <<--
 
-  console.log(m, n);
+  //         TotalQty = suq * (n * y4 + m * y3);
 
-  //         // Muhammet Soytürk -->>
-  //         var n = 0;
-  //         var m = 0;
-  //         var max = 0;
-  //         for (var i = 0; i < dizi1.length; i++) {
-  //           for (var j = 0; j < dizi2.length; j++) {
-  //             if (bw * dizi1[i] + bl * dizi2[j] <= cw) {
-  //               if (bw * dizi1[i] + bl * dizi2[j] >= max) {
-  //                 max = bw * dizi1[i] + bl * dizi2[j];
-  //                 n = dizi1[i];
-  //                 m = dizi2[j];
-  //               }
-  //             }
-  //           }
-  //         }
-  //         // Muhammet Soytürk <<--
+  //         EndSpace1 = cl - y4 * bl;
+
+  //         EndSpace2 = cl - y3 * bw;
+
+  const endSpace = contL - lengthwise2 * boxL;
+
+  if (endSpace > boxW) {
+    const spaceWidth = contW - longit * boxL;
+    console.log(spaceWidth, inWidth, longit);
+  }
+
+  const totalQuantity =
+    boxStack * (inWidth * lengthwise2 + longit * lengthwise1);
+
+  return { inWidth, longit, lengthwise1, lengthwise2, boxStack, totalQuantity };
 };
 
 // suq = Math.floor(ch / bh);

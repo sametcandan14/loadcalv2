@@ -61,10 +61,9 @@ const Calculate = () => {
         contH,
       };
 
-      CalFunc(checkedValues);
+      const calculatedValues = CalFunc(checkedValues);
+      console.log(calculatedValues);
     }
-
-    console.log(values);
   };
   return (
     <div className="steel-gray-back ">
