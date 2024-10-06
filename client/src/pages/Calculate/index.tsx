@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { CalFunc } from "../../utils/CalFunc";
 
 const Calculate = () => {
-  type valuesT = {
+  type dimensionsT = {
     contWidth?: number;
     contLength?: number;
     contHeight?: number;
@@ -14,11 +14,25 @@ const Calculate = () => {
     boxHeight?: number;
   };
 
-  const [values, setValues] = useState<valuesT>();
+  type planValuesT = {
+    inWidth: number;
+    longit: number;
+    lengthwise1: number;
+    lengthwise2: number;
+    boxStack: number;
+    totalQuantity: number;
+    spaceWidth: number;
+    lengthwise3: number;
+    widthwise3: number;
+    additionalQty: number;
+  };
+
+  const [dimensions, setDimensions] = useState<dimensionsT>();
+  const [planValues, setPlanValues] = useState<planValuesT>();
 
   const handleChange = (e: FormEvent) => {
-    setValues({
-      ...values,
+    setDimensions({
+      ...dimensions,
       [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
         .value,
     });
@@ -28,29 +42,29 @@ const Calculate = () => {
     e.preventDefault();
 
     if (
-      values?.boxHeight &&
-      values.boxLength &&
-      values.boxWidth &&
-      values.contHeight &&
-      values.contLength &&
-      values.contWidth
+      dimensions?.boxHeight &&
+      dimensions.boxLength &&
+      dimensions.boxWidth &&
+      dimensions.contHeight &&
+      dimensions.contLength &&
+      dimensions.contWidth
     ) {
-      if (Number(values.contWidth) > Number(values.contLength)) {
+      if (Number(dimensions.contWidth) > Number(dimensions.contLength)) {
         toast.warn("Container Width must be smaller than Container Length");
         return;
       }
 
-      if (Number(values.boxWidth) > Number(values.boxLength)) {
+      if (Number(dimensions.boxWidth) > Number(dimensions.boxLength)) {
         toast.warn("Box Width must be smaller than Box Length");
         return;
       }
 
-      const boxW = values.boxWidth;
-      const boxL = values.boxLength;
-      const boxH = values.boxHeight;
-      const contW = values.contWidth;
-      const contL = values.contLength;
-      const contH = values.contHeight;
+      const boxW = dimensions.boxWidth;
+      const boxL = dimensions.boxLength;
+      const boxH = dimensions.boxHeight;
+      const contW = dimensions.contWidth;
+      const contL = dimensions.contLength;
+      const contH = dimensions.contHeight;
 
       const checkedValues = {
         boxW,
@@ -62,7 +76,8 @@ const Calculate = () => {
       };
 
       const calculatedValues = CalFunc(checkedValues);
-      console.log(calculatedValues);
+      setPlanValues(calculatedValues);
+      console.log("plan values", planValues);
     }
   };
   return (
@@ -133,7 +148,7 @@ const Calculate = () => {
         </Form>
         <ToastContainer />
       </Container>
-      <LoadPlan />
+      <LoadPlan dimensions={dimensions} planValues={planValues} />
     </div>
   );
 };

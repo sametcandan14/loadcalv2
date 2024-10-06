@@ -44,58 +44,34 @@ export const CalFunc = (props: CalFuncProps) => {
 
   const endSpace = contL - lengthwise2 * boxL;
 
+  var totalQuantity = 0;
+  var spaceWidth = 0;
+  var lengthwise3 = 0;
+  var widthwise3 = 0;
+  var additionalQty = 0;
+
   if (endSpace > boxW) {
-    const spaceWidth = contW - longit * boxL;
-    console.log(spaceWidth, inWidth, longit);
+    spaceWidth = contW - longit * boxL;
+    lengthwise3 = Math.floor(endSpace / boxW);
+    widthwise3 = Math.floor(spaceWidth / boxL);
+    additionalQty = lengthwise3 * widthwise3 * boxStack;
+
+    totalQuantity =
+      boxStack * (inWidth * lengthwise2 + longit * lengthwise1) + additionalQty;
+  } else {
+    totalQuantity = boxStack * (inWidth * lengthwise2 + longit * lengthwise1);
   }
 
-  const totalQuantity =
-    boxStack * (inWidth * lengthwise2 + longit * lengthwise1);
-
-  return { inWidth, longit, lengthwise1, lengthwise2, boxStack, totalQuantity };
+  return {
+    inWidth,
+    longit,
+    lengthwise1,
+    lengthwise2,
+    boxStack,
+    totalQuantity,
+    spaceWidth,
+    lengthwise3,
+    widthwise3,
+    additionalQty,
+  };
 };
-
-// suq = Math.floor(ch / bh);
-
-//         y1 = Math.floor(cw / bw);
-
-//         y2 = Math.floor(cw / bl);
-
-//         y3 = Math.floor(cl / bw);
-
-//         y4 = Math.floor(cl / bl);
-
-//         var dizi1 = new Array();
-
-//         var dizi2 = new Array();
-
-//         for (var a = 0; a <= y1; a++) dizi1.push(a);
-
-//         for (var b = 0; b <= y2; b++) dizi2.push(b);
-
-//         // Muhammet Soytürk -->>
-//         var n = 0;
-//         var m = 0;
-//         var max = 0;
-//         for (var i = 0; i < dizi1.length; i++) {
-//           for (var j = 0; j < dizi2.length; j++) {
-//             if (bw * dizi1[i] + bl * dizi2[j] <= cw) {
-//               if (bw * dizi1[i] + bl * dizi2[j] >= max) {
-//                 max = bw * dizi1[i] + bl * dizi2[j];
-//                 n = dizi1[i];
-//                 m = dizi2[j];
-//               }
-//             }
-//           }
-//         }
-//         // Muhammet Soytürk <<--
-
-//         TotalQty = suq * (n * y4 + m * y3);
-
-//         SideSpace = cw - (n * bw + m * bl);
-
-//         EndSpace1 = cl - y4 * bl;
-
-//         EndSpace2 = cl - y3 * bw;
-
-//         TopSpace = ch - suq * bh;
