@@ -15,16 +15,16 @@ const Calculate = () => {
   };
 
   type planValuesT = {
-    inWidth: number;
-    longit: number;
-    lengthwise1: number;
-    lengthwise2: number;
-    boxStack: number;
-    totalQuantity: number;
-    spaceWidth: number;
-    lengthwise3: number;
-    widthwise3: number;
-    additionalQty: number;
+    inWidth?: number;
+    longit?: number;
+    lengthwise1?: number;
+    lengthwise2?: number;
+    boxStack?: number;
+    totalQuantity?: number;
+    spaceWidth?: number;
+    lengthwise3?: number;
+    widthwise3?: number;
+    additionalQty?: number;
   };
 
   const [dimensions, setDimensions] = useState<dimensionsT>();
@@ -38,7 +38,7 @@ const Calculate = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (
