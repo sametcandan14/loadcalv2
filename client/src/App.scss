@@ -60,7 +60,7 @@
 }
 
 .cargo-green {
-  background-color: var(--cargo-green);
+  color: var(--cargo-green);
 }
 
 .ocean-blue {
@@ -78,7 +78,7 @@
 }
 
 body {
-  background-color: var(--base-color);
+  background-color: var(--steel-gray);
 }
 
 // FOOTER
@@ -94,4 +94,10 @@ body {
     width: 2rem;
     padding: 0.1rem;
   }
+}
+
+.load-plan {
+ padding: 0;
+ margin:0;
+  box-sizing: border-box;
 }
