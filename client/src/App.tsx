@@ -14,7 +14,6 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/containers" element={<Containers />} />
-        <Route path="/containers" element={<Containers />} />
         <Route path="/boxes" element={<Boxes />} />
         <Route path="/plans" element={<Plans />} />
         <Route path="/calculate" element={<Calculate />} />
