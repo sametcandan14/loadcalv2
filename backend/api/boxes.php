@@ -1,6 +1,18 @@
 <?php
 // backend/api/boxes.php
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE, PUT");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// OPTIONS preflight isteğine cevap ver (ön kontrol)
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+
+
 require_once('../config.php');
 $pdo->exec("PRAGMA foreign_keys = ON");
 
@@ -38,8 +50,7 @@ if ($method === 'POST') {
     exit;
 }
 
-http_response_code(405);
-echo json_encode(['error' => 'Method not allowed']);
+
 
 if ($method === 'PUT') {
     // PUT ile güncelleme
@@ -89,3 +100,6 @@ if ($method === 'DELETE') {
     echo json_encode(['success' => true]);
     exit;
 }
+
+http_response_code(405);
+echo json_encode(['error' => 'Method not allowed']);
